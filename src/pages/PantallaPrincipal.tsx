@@ -1,71 +1,55 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import fondo from "../assets/fondo.jpg";
 import "../App.css";
-import { crearSala, unirseSala } from "../services/rooms";
 
 const PantallaPrincipal: React.FC = () => {
   const navigate = useNavigate();
-  const [codigo, setCodigo] = useState("");
-  const [nickname, setNickname] = useState("");
-
-  const handleCrearSala = async () => {
-    try {
-      const sala = await crearSala();
-      navigate(`/moderador/${sala.code}`); 
-    } catch (error) {
-      console.error("Error al crear sala:", error);
-    }
-  };
-
-  const handleUnirseSala = async () => {
-    if (!codigo || !nickname) {
-      alert("Debes ingresar tu nombre y el código");
-      return;
-    }
-    try {
-      const data = await unirseSala(codigo, nickname);
-      navigate(`/jugador/${data.player.id}/${data.room.code}`);
-    } catch (error) {
-      console.error("Error al unirse a sala:", error);
-    }
-  };
 
   return (
     <div className="inicio" style={{ backgroundImage: `url(${fondo})` }}>
-      <div className="inicio">
-        <div className="contenido">
-          <h2 className="subtitulo">Selecciona una opción</h2>
+      <div className="contenido">
+        <h1 className="titulo-principal">SELECCIONA TU ROL</h1>
 
-          {/* Botón crear sala */}
-          <button className="arcade-btn" onClick={handleCrearSala}>
-            Crear Sala
-          </button>
+        <div className="roles-container">
+          {/* Card Moderador */}
+          <div className="card moderador">
+            <h2>MODERADOR</h2>
+            <p>
+              Crea salas, lanza preguntas con tiempo límite y controla el juego
+            </p>
+            <ul>
+              <li>Crear sala con código único</li>
+              <li>Lanzar preguntas con timer</li>
+              <li>Ver puntuaciones en tiempo real</li>
+            </ul>
+            <button
+              className="btn-moderador"
+              onClick={() => navigate("/CrearSala")}
+            >
+              Crear Sala
+            </button>
+          </div>
 
-          {/* Inputs y botón para unirse */}
-          <input
-            type="text"
-            placeholder="Código de sala"
-            value={codigo}
-            onChange={(e) => setCodigo(e.target.value)}
-            className="arcade-input"
-          />
-          <input
-            type="text"
-            placeholder="Tu nombre"
-            value={nickname}
-            onChange={(e) => setNickname(e.target.value)}
-            className="arcade-input"
-          />
+          {/* Card Jugador */}
+          <div className="card jugador">
+            <h2>JUGADOR</h2>
+            <p>Únete a una sala existente y compite con otros jugadores</p>
+            <ul>
+              <li>Ingresar con nickname único</li>
+              <li>Responder en tiempo límite</li>
+              <li>Competir por el primer lugar</li>
+            </ul>
+            <button
+              className="btn-jugador"
+              onClick={() => navigate("/UnirseSala")}
+            >
+              Unirse a Sala
+            </button>
+          </div>
         </div>
-        <button className="arcade-btn" onClick={() => navigate("/moderador")}>
-          Crear Sala
-        </button>
 
-        <button className="arcade-btn" onClick={() => navigate("/jugador")}>
-          Unirse a Sala
-        </button>
-
+        {/* Brick inferior */}
         <div className="brick"></div>
       </div>
     </div>
