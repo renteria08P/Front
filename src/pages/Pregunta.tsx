@@ -80,6 +80,7 @@ const Pregunta: React.FC = () => {
           <p className="espera-text">⌛ Esperando nueva pregunta...</p>
         )}
         <p className="codigo-sala">🏆 Puntaje: {score}</p>
+        <button onClick={() => navigate("/Puntaje")}> Ver Puntuaciones</button>
       </div>
     </div>
   );

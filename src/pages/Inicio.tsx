@@ -16,13 +16,12 @@ const Inicio: React.FC = () => {
       {/* Contenido */}
       <div className="contenido">
         <h1 className="titulo">TRIVIA TIME</h1>
+        <h2 > Juego Multijugador en Tiempo Real</h2>
         <img src={panda} alt="panda" className="panda" />
+        <h2>¡Pon a prueba tus conocimientos en el juego de trivia más divertido!</h2>
         <button
           className="arcade-btn"
-          onClick={() => navigate("/pantalla-principal")}
-        >
-          Empezar
-        </button>
+          onClick={() => navigate("/pantalla-principal")}>Empezar a Jugar</button>
       </div>
 
       {/* Brick inferior */}
