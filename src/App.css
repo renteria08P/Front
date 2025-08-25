@@ -1,0 +1,242 @@
+/* ===================================================== */
+/* 🔹 BASE GENERAL                                       */
+/* ===================================================== */
+
+/* Contenedor principal con imagen de fondo */
+.inicio {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
+  background-image: url("../assets/fondo.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Contenido centrado */
+.inicio .contenido {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  z-index: 1;
+  position: relative;
+}
+
+/* ===================================================== */
+/* 🔹 TIPOGRAFÍA Y EFECTOS GENERALES                      */
+/* ===================================================== */
+
+.titulo {
+  font-size: 2.5rem;
+  font-family: 'Press Start 2P', cursive;
+  color: #fff;
+  margin-bottom: 2rem;
+  text-shadow: 4px 4px #000, -2px -2px #333;
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 4px 4px #000, 0 0 10px #22c55e; }
+  to   { text-shadow: 4px 4px #000, 0 0 20px #16a34a; }
+}
+
+.subtitulo {
+  font-size: 1.2rem;
+  font-family: 'Press Start 2P', cursive;
+  color: #fff;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px #000;
+}
+
+/* ===================================================== */
+/* 🔹 BOTONES Y FORMULARIOS                              */
+/* ===================================================== */
+
+.arcade-btn {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #2563eb;
+  color: rgb(251, 246, 246);
+  margin: 1rem 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.arcade-btn:active {
+  transform: translateY(2px);
+  box-shadow: 2px 2px 0px #000;
+}
+
+.arcade-label {
+  font-size: 1rem;
+  font-weight: bold;
+  display: block;
+}
+
+.arcade-input {
+  width: 100%;
+  padding: 0.6rem;
+  border: 2px solid #98b2ec;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.arcade-input:focus {
+  border-color: #1d4ed8;
+  box-shadow: 0 0 6px rgba(37, 99, 235, 0.5);
+}
+
+/* ===================================================== */
+/* 🔹 ANIMACIONES                                        */
+/* ===================================================== */
+
+.panda {
+  width: 150px;
+  margin-bottom: 2rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+/* ===================================================== */
+/* 🔹 JUGADOR (Preguntas y Opciones)                     */
+/* ===================================================== */
+
+.pregunta-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.pregunta-box {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  width: 80%;
+  max-width: 500px;
+}
+
+.pregunta-titulo {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.opciones-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.opcion-btn {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 12px;
+  background: #4a90e2;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.opcion-btn:hover {
+  background: #2c6fba;
+}
+
+.opcion-btn.seleccionada {
+  background: #f02929;
+}
+
+/* ===================================================== */
+/* 🔹 MARCADOR / PUNTAJE                                 */
+/* ===================================================== */
+
+.puntaje-box {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  width: 60%;
+  max-width: 400px;
+  margin: auto;
+}
+
+.puntaje-texto {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+}
+
+.puntaje-puntos {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #272bae;
+}
+
+/* ===================================================== */
+/* 🔹 MODERADOR                                          */
+/* ===================================================== */
+
+.moderador-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(186, 186, 186, 0.7);
+  border-radius: 12px;
+  padding: 10px 20px;
+  margin: 10px auto;
+  max-width: 90%;
+  font-family: "Press Start 2P", cursive;
+  font-size: 12px;
+}
+
+.panel-titulo {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.sala-info {
+  flex: 1;
+  text-align: center;
+  font-size: 12px;
+}
+
+.panel-right {
+  display: flex;
+  gap: 8px;
+}
+
+.moderador-box {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 2rem;
+  border-radius: 16px;
+  max-width: 550px;
+  margin: auto;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
+}
+
+.moderador-info {
+  display: flex;
+  gap: 1rem;
+  font-size: 12px;
+  font-family: "Press Start 2P", cursive;
+}
