@@ -1,53 +1,82 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import fondo from "../assets/fondo.jpg";
 import "../App.css";
-import { crearSala } from "../services/rooms";
 
-const Jugador: React.FC = () => {
-  const [nickname, setNickname] = useState("");
-  const [codigo, setCodigo] = useState<string | null>(null);
-  const [playerId, setPlayerId] = useState<number | null>(null);
+const Reglas: React.FC = () => {
   const navigate = useNavigate();
 
-  const handleCrearSala = async () => {
-    if (!nickname.trim()) return alert("Ingresa tu nickname");
-    try {
-      const { room, player } = await crearSala(nickname);
-      setCodigo(room.code);
-      setPlayerId(player.id);
-
-      navigate("/reglas", {
-        state: { roomCode: room.code, playerId: player.id, nickname },
-      });
-    } catch (err) {
-      console.error("Error creando sala:", err);
-      alert("No se pudo crear la sala");
-    }
+  const handleIniciarJuego = () => {
+    navigate("/Pregunta"); 
   };
 
   return (
-    <div className="inicio" style={{ backgroundImage: `url(${fondo})` }}>
-      <div className="jugador-box">
-        <h2 className="subtitulo">🙋‍♂️ Crear Sala</h2>
-        <input
-          type="text"
-          value={nickname}
-          onChange={(e) => setNickname(e.target.value)}
-          className="arcade-input"
-          placeholder="Tu nickname..."
-        />
-        <button className="arcade-btn mt-4" onClick={handleCrearSala}>
-          Crear Sala
+    <div
+      style={{
+        backgroundImage: `url(${fondo})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        width: "100%",
+        height: "100vh",
+        margin: 0,
+        padding: 0,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <div
+        className="reglas-box"
+        style={{
+          backgroundColor: "rgba(255, 255, 255, 0.85)",
+          borderRadius: "12px",
+          padding: "30px",
+          textAlign: "center",
+          maxWidth: "600px",
+          boxShadow: "0 4px 10px rgba(0,0,0,0.3)",
+        }}
+      >
+        <h2
+          style={{
+            fontFamily: "Press Start 2P, cursive",
+            marginBottom: "20px",
+          }}
+        >
+          REGLAS DE JUEGO
+        </h2>
+
+        <ul
+          style={{ textAlign: "left", marginBottom: "30px", lineHeight: "1.8" }}
+        >
+          <li>
+            🕑 Cada jugador tiene <b>30 segundos</b> para responder una
+            pregunta.
+          </li>
+          <li>❌ Si no responde en ese tiempo, se considera incorrecta.</li>
+          <li>
+            🎮 El tiempo total de la partida puede ser de <b>5 rondas</b>.
+          </li>
+        </ul>
+
+        <button
+          onClick={handleIniciarJuego}
+          style={{
+            backgroundColor: "#166534",
+            color: "white",
+            padding: "15px 40px",
+            fontSize: "18px",
+            fontFamily: "Press Start 2P, cursive",
+            border: "none",
+            borderRadius: "10px",
+            cursor: "pointer",
+          }}
+        >
+          Iniciar Juego
         </button>
-        {codigo && (
-          <p className="codigo-sala">
-            ✅ Código de sala: <b>{codigo}</b>
-          </p>
-        )}
       </div>
     </div>
   );
 };
 
-export default Jugador;
+export default Reglas;

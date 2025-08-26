@@ -11,9 +11,9 @@ import Pregunta from "./pages/Pregunta";
 import Puntaje from "./pages/Puntaje";
 
 // Flujo Moderador
-import Moderador from "./pages/Moderador";
 import Marcador from "./pages/Marcador";
 import CrearSala from "./pages/CrearSala";
+import CrearPregunta from "./pages/CrearPregunta";
 import UnirseSala from "./pages/UnirseSala";
 
 function App() {
@@ -28,14 +28,16 @@ function App() {
 
         {/* === FLUJO JUGADOR === */}
         <Route path="/jugador" element={<Jugador />} />
-        <Route path="/reglas" element={<Reglas />} />
         <Route path="/puntaje" element={<Puntaje />} />
         <Route path="/unirsesala" element={<UnirseSala />} />
+        <Route path="/reglas" element={<Reglas />} />
         <Route path="/pregunta" element={<Pregunta />} />
 
         {/* === FLUJO MODERADOR === */}
-        <Route path="/moderador" element={<Moderador />} />
+
         <Route path="/crearsala" element={<CrearSala />} />
+        <Route path="/crearpregunta" element={<CrearPregunta />} />
+
         <Route path="/marcador" element={<Marcador />} />
       </Routes>
     </Router>
